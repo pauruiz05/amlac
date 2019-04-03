@@ -24,7 +24,7 @@ class DefaultFooter extends Component {
           <a href="https://amlc.gov.ph" style={styles.link}>
             AMLAC
           </a>{" "}
-          &copy; 2018
+          &copy; 2019
         </span>
         <span className="ml-auto">
           Powered by{" "}

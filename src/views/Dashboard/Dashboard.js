@@ -32,353 +32,7 @@ const brandInfo = getStyle("--info");
 const brandWarning = getStyle("--warning");
 const brandDanger = getStyle("--danger");
 
-// Card Chart 1
-const cardChartData1 = {
-  labels: ["January", "February", "March", "April", "May", "June", "July"],
-  datasets: [
-    {
-      label: "My First dataset",
-      backgroundColor: brandPrimary,
-      borderColor: "rgba(255,255,255,.55)",
-      data: [65, 59, 84, 84, 51, 55, 40]
-    }
-  ]
-};
-
-const cardChartOpts1 = {
-  tooltips: {
-    enabled: false,
-    custom: CustomTooltips
-  },
-  maintainAspectRatio: false,
-  legend: {
-    display: false
-  },
-  scales: {
-    xAxes: [
-      {
-        gridLines: {
-          color: "transparent",
-          zeroLineColor: "transparent"
-        },
-        ticks: {
-          fontSize: 2,
-          fontColor: "transparent"
-        }
-      }
-    ],
-    yAxes: [
-      {
-        display: false,
-        ticks: {
-          display: false,
-          min: Math.min.apply(Math, cardChartData1.datasets[0].data) - 5,
-          max: Math.max.apply(Math, cardChartData1.datasets[0].data) + 5
-        }
-      }
-    ]
-  },
-  elements: {
-    line: {
-      borderWidth: 1
-    },
-    point: {
-      radius: 4,
-      hitRadius: 10,
-      hoverRadius: 4
-    }
-  }
-};
-
-// Card Chart 2
-const cardChartData2 = {
-  labels: ["January", "February", "March", "April", "May", "June", "July"],
-  datasets: [
-    {
-      label: "My First dataset",
-      backgroundColor: brandInfo,
-      borderColor: "rgba(255,255,255,.55)",
-      data: [1, 18, 9, 17, 34, 22, 11]
-    }
-  ]
-};
-
-const cardChartOpts2 = {
-  tooltips: {
-    enabled: false,
-    custom: CustomTooltips
-  },
-  maintainAspectRatio: false,
-  legend: {
-    display: false
-  },
-  scales: {
-    xAxes: [
-      {
-        gridLines: {
-          color: "transparent",
-          zeroLineColor: "transparent"
-        },
-        ticks: {
-          fontSize: 2,
-          fontColor: "transparent"
-        }
-      }
-    ],
-    yAxes: [
-      {
-        display: false,
-        ticks: {
-          display: false,
-          min: Math.min.apply(Math, cardChartData2.datasets[0].data) - 5,
-          max: Math.max.apply(Math, cardChartData2.datasets[0].data) + 5
-        }
-      }
-    ]
-  },
-  elements: {
-    line: {
-      tension: 0.00001,
-      borderWidth: 1
-    },
-    point: {
-      radius: 4,
-      hitRadius: 10,
-      hoverRadius: 4
-    }
-  }
-};
-
-// Card Chart 3
-const cardChartData3 = {
-  labels: ["January", "February", "March", "April", "May", "June", "July"],
-  datasets: [
-    {
-      label: "My First dataset",
-      backgroundColor: "rgba(255,255,255,.2)",
-      borderColor: "rgba(255,255,255,.55)",
-      data: [78, 81, 80, 45, 34, 12, 40]
-    }
-  ]
-};
-
-const cardChartOpts3 = {
-  tooltips: {
-    enabled: false,
-    custom: CustomTooltips
-  },
-  maintainAspectRatio: false,
-  legend: {
-    display: false
-  },
-  scales: {
-    xAxes: [
-      {
-        display: false
-      }
-    ],
-    yAxes: [
-      {
-        display: false
-      }
-    ]
-  },
-  elements: {
-    line: {
-      borderWidth: 2
-    },
-    point: {
-      radius: 0,
-      hitRadius: 10,
-      hoverRadius: 4
-    }
-  }
-};
-
-// Card Chart 4
-const cardChartData4 = {
-  labels: ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""],
-  datasets: [
-    {
-      label: "My First dataset",
-      backgroundColor: "rgba(255,255,255,.3)",
-      borderColor: "transparent",
-      data: [78, 81, 80, 45, 34, 12, 40, 75, 34, 89, 32, 68, 54, 72, 18, 98]
-    }
-  ]
-};
-
-const cardChartOpts4 = {
-  tooltips: {
-    enabled: false,
-    custom: CustomTooltips
-  },
-  maintainAspectRatio: false,
-  legend: {
-    display: false
-  },
-  scales: {
-    xAxes: [
-      {
-        display: false,
-        barPercentage: 0.6
-      }
-    ],
-    yAxes: [
-      {
-        display: false
-      }
-    ]
-  }
-};
-
-// Social Box Chart
-const socialBoxData = [
-  { data: [65, 59, 84, 84, 51, 55, 40], label: "facebook" },
-  { data: [1, 13, 9, 17, 34, 41, 38], label: "twitter" },
-  { data: [78, 81, 80, 45, 34, 12, 40], label: "linkedin" },
-  { data: [35, 23, 56, 22, 97, 23, 64], label: "google" }
-];
-
-const makeSocialBoxData = dataSetNo => {
-  const dataset = socialBoxData[dataSetNo];
-  const data = {
-    labels: ["January", "February", "March", "April", "May", "June", "July"],
-    datasets: [
-      {
-        backgroundColor: "rgba(255,255,255,.1)",
-        borderColor: "rgba(255,255,255,.55)",
-        pointHoverBackgroundColor: "#fff",
-        borderWidth: 2,
-        data: dataset.data,
-        label: dataset.label
-      }
-    ]
-  };
-  return () => data;
-};
-
-const socialChartOpts = {
-  tooltips: {
-    enabled: false,
-    custom: CustomTooltips
-  },
-  responsive: true,
-  maintainAspectRatio: false,
-  legend: {
-    display: false
-  },
-  scales: {
-    xAxes: [
-      {
-        display: false
-      }
-    ],
-    yAxes: [
-      {
-        display: false
-      }
-    ]
-  },
-  elements: {
-    point: {
-      radius: 0,
-      hitRadius: 10,
-      hoverRadius: 4,
-      hoverBorderWidth: 3
-    }
-  }
-};
-
-// sparkline charts
-const sparkLineChartData = [
-  {
-    data: [35, 23, 56, 22, 97, 23, 64],
-    label: "New Clients"
-  },
-  {
-    data: [65, 59, 84, 84, 51, 55, 40],
-    label: "Recurring Clients"
-  },
-  {
-    data: [35, 23, 56, 22, 97, 23, 64],
-    label: "Pageviews"
-  },
-  {
-    data: [65, 59, 84, 84, 51, 55, 40],
-    label: "Organic"
-  },
-  {
-    data: [78, 81, 80, 45, 34, 12, 40],
-    label: "CTR"
-  },
-  {
-    data: [1, 13, 9, 17, 34, 41, 38],
-    label: "Bounce Rate"
-  }
-];
-
-const makeSparkLineData = (dataSetNo, variant) => {
-  const dataset = sparkLineChartData[dataSetNo];
-  const data = {
-    labels: [
-      "Monday",
-      "Tuesday",
-      "Wednesday",
-      "Thursday",
-      "Friday",
-      "Saturday",
-      "Sunday"
-    ],
-    datasets: [
-      {
-        backgroundColor: "transparent",
-        borderColor: variant ? variant : "#c2cfd6",
-        data: dataset.data,
-        label: dataset.label
-      }
-    ]
-  };
-  return () => data;
-};
-
-const sparklineChartOpts = {
-  tooltips: {
-    enabled: false,
-    custom: CustomTooltips
-  },
-  responsive: true,
-  maintainAspectRatio: true,
-  scales: {
-    xAxes: [
-      {
-        display: false
-      }
-    ],
-    yAxes: [
-      {
-        display: false
-      }
-    ]
-  },
-  elements: {
-    line: {
-      borderWidth: 2
-    },
-    point: {
-      radius: 0,
-      hitRadius: 10,
-      hoverRadius: 4,
-      hoverBorderWidth: 3
-    }
-  },
-  legend: {
-    display: false
-  }
-};
-
 // Main Chart
-
 //Random Numbers
 function random(min, max) {
   return Math.floor(Math.random() * (max - min + 1) + min);
@@ -388,17 +42,15 @@ var elements = 27;
 var data1 = [];
 var data2 = [];
 var data3 = [];
-
 var data4 = [];
 var data5 = [];
 
 for (var i = 0; i <= elements; i++) {
   data1.push(random(50, 200));
-  data2.push(random(80, 100));
-  data3.push(65);
-
-  data4.push(random(120, 50));
-  data5.push(random(140, 10));
+  data2.push(random(80, 210));
+  data3.push(random(65, 240));
+  data4.push(random(20, 150));
+  data5.push(random(10, 190));
 }
 
 const mainChart = {
@@ -440,7 +92,6 @@ const mainChart = {
       borderWidth: 2,
       lineTension: 0.1,
       borderJoinStyle: "miter",
-      // borderDash: [8, 5],
       data: data3
     },
     {
@@ -451,7 +102,6 @@ const mainChart = {
       borderWidth: 2,
       lineTension: 0.1,
       borderJoinStyle: "miter",
-      // borderDash: [8, 5],
       data: data4
     },
     {
@@ -462,7 +112,6 @@ const mainChart = {
       borderWidth: 2,
       lineTension: 0.1,
       borderJoinStyle: "miter",
-      // borderDash: [8, 5],
       data: data5
     }
   ]
@@ -549,143 +198,124 @@ class Dashboard extends Component {
   render() {
     return (
       <div className="animated fadeIn">
-        <Row>
-          {/* <Col xs="12" sm="6" lg="3">
-            <Card className="text-white bg-info">
-              <CardBody className="pb-0">
-                <ButtonGroup className="float-right">
-                  <ButtonDropdown
-                    id="card1"
-                    isOpen={this.state.card1}
-                    toggle={() => {
-                      this.setState({ card1: !this.state.card1 });
-                    }}
-                  >
-                    <DropdownToggle caret className="p-0" color="transparent">
-                      <i className="icon-settings" />
-                    </DropdownToggle>
-                    <DropdownMenu right>
-                      <DropdownItem>Action</DropdownItem>
-                      <DropdownItem>Another action</DropdownItem>
-                      <DropdownItem disabled>Disabled action</DropdownItem>
-                      <DropdownItem>Something else here</DropdownItem>
-                    </DropdownMenu>
-                  </ButtonDropdown>
-                </ButtonGroup>
-                <div className="text-value">9.823</div>
-                <div>Members online</div>
+      <Row>
+          <Col>
+            <Card>
+              <CardHeader className="mb-0">
+                Daily Bank Transactions
+                <div className="small text-muted">Bank Hours: 8am - 4pm</div>
+              </CardHeader>
+              <CardBody>
+                <Row>
+                  <Col xs="12" md="12" xl="12">
+                    <div className="progress-group mb-4">
+                      <div className="progress-group-prepend">
+                        <span className="progress-group-text">UCPB</span>
+                      </div>
+                      <div className="progress-group-bars">
+                      <div>
+                        <Progress
+                          className="progress-sm mt-2"
+                          color="success"
+                          value="34"
+                        />
+                        <div className="float-right">
+                        <small className="text-muted">
+                              34%
+                        </small>
+                        </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="progress-group mb-4">
+                      <div className="progress-group-prepend">
+                        <span className="progress-group-text">
+                          Security Bank
+                        </span>
+                      </div>
+                      <div className="progress-group-bars">
+                      <div>
+                        <Progress
+                          className="progress-sm mt-2"
+                          color="info"
+                          value="45"
+                        />
+                        <div className="float-right">
+                        <div className="float-right">
+                        <small className="text-muted">
+                             45%
+                        </small>
+                        </div>
+                        </div>
+                      </div>
+                      </div>
+                    </div>
+                    <div className="progress-group mb-4">
+                      <div className="progress-group-prepend">
+                        <span className="progress-group-text">UnionBank</span>
+                      </div>
+                      <div className="progress-group-bars">
+                        <div>
+                        <Progress
+                          className="progress-sm mt-2"
+                          color="warning"
+                          value="78"
+                        />
+                        <div className="float-right">
+                        <small className="text-muted">
+                              78%
+                        </small>
+                        </div>
+                      </div>
+                      </div>
+                    </div>
+                    <div className="progress-group mb-4">
+                      <div className="progress-group-prepend">
+                        <span className="progress-group-text">
+                          BPI 
+                        </span>
+                      </div>
+                      <div className="progress-group-bars">
+                      <div>
+                        <Progress
+                          className="progress-sm mt-2"
+                          color="danger"
+                          value="50"
+                        />
+                        <div className="float-right">
+                        <small className="text-muted">
+                              50%
+                        </small>
+                        </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="progress-group mb-4">
+                      <div className="progress-group-prepend">
+                        <span className="progress-group-text">
+                          BDO
+                        </span>
+                      </div>
+                      <div className="progress-group-bars">
+                        <div>
+                        <Progress
+                          className="progress-sm mt-2"
+                          color="primary"
+                          value="70"
+                        />
+                        <div className="float-right">
+                        <small className="text-muted">
+                              70%
+                        </small>
+                        </div>
+                        </div>
+                      </div>
+                    </div>
+                  </Col>
+                  </Row>
               </CardBody>
-              <div className="chart-wrapper mx-3" style={{ height: "70px" }}>
-                <Line
-                  data={cardChartData2}
-                  options={cardChartOpts2}
-                  height={70}
-                />
-              </div>
             </Card>
-          </Col> */}
-
-          {/* <Col xs="12" sm="6" lg="3">
-            <Card className="text-white bg-primary">
-              <CardBody className="pb-0">
-                <ButtonGroup className="float-right">
-                  <Dropdown
-                    id="card2"
-                    isOpen={this.state.card2}
-                    toggle={() => {
-                      this.setState({ card2: !this.state.card2 });
-                    }}
-                  >
-                    <DropdownToggle className="p-0" color="transparent">
-                      <i className="icon-location-pin" />
-                    </DropdownToggle>
-                    <DropdownMenu right>
-                      <DropdownItem>Action</DropdownItem>
-                      <DropdownItem>Another action</DropdownItem>
-                      <DropdownItem>Something else here</DropdownItem>
-                    </DropdownMenu>
-                  </Dropdown>
-                </ButtonGroup>
-                <div className="text-value">9.823</div>
-                <div>Members online</div>
-              </CardBody>
-              <div className="chart-wrapper mx-3" style={{ height: "70px" }}>
-                <Line
-                  data={cardChartData1}
-                  options={cardChartOpts1}
-                  height={70}
-                />
-              </div>
-            </Card>
-          </Col> */}
-
-          {/* <Col xs="12" sm="6" lg="3">
-            <Card className="text-white bg-warning">
-              <CardBody className="pb-0">
-                <ButtonGroup className="float-right">
-                  <Dropdown
-                    id="card3"
-                    isOpen={this.state.card3}
-                    toggle={() => {
-                      this.setState({ card3: !this.state.card3 });
-                    }}
-                  >
-                    <DropdownToggle caret className="p-0" color="transparent">
-                      <i className="icon-settings" />
-                    </DropdownToggle>
-                    <DropdownMenu right>
-                      <DropdownItem>Action</DropdownItem>
-                      <DropdownItem>Another action</DropdownItem>
-                      <DropdownItem>Something else here</DropdownItem>
-                    </DropdownMenu>
-                  </Dropdown>
-                </ButtonGroup>
-                <div className="text-value">9.823</div>
-                <div>Members online</div>
-              </CardBody>
-              <div className="chart-wrapper" style={{ height: "70px" }}>
-                <Line
-                  data={cardChartData3}
-                  options={cardChartOpts3}
-                  height={70}
-                />
-              </div>
-            </Card>
-          </Col> */}
-
-          {/* <Col xs="12" sm="6" lg="3">
-            <Card className="text-white bg-danger">
-              <CardBody className="pb-0">
-                <ButtonGroup className="float-right">
-                  <ButtonDropdown
-                    id="card4"
-                    isOpen={this.state.card4}
-                    toggle={() => {
-                      this.setState({ card4: !this.state.card4 });
-                    }}
-                  >
-                    <DropdownToggle caret className="p-0" color="transparent">
-                      <i className="icon-settings" />
-                    </DropdownToggle>
-                    <DropdownMenu right>
-                      <DropdownItem>Action</DropdownItem>
-                      <DropdownItem>Another action</DropdownItem>
-                      <DropdownItem>Something else here</DropdownItem>
-                    </DropdownMenu>
-                  </ButtonDropdown>
-                </ButtonGroup>
-                <div className="text-value">9.823</div>
-                <div>Members online</div>
-              </CardBody>
-              <div className="chart-wrapper mx-3" style={{ height: "70px" }}>
-                <Bar
-                  data={cardChartData4}
-                  options={cardChartOpts4}
-                  height={70}
-                />
-              </div>
-            </Card>
-          </Col> */}
+          </Col>
         </Row>
         <Row>
           <Col>
@@ -707,13 +337,6 @@ class Dashboard extends Component {
                       aria-label="Toolbar with button groups"
                     >
                       <ButtonGroup className="mr-3" aria-label="First group">
-                        <Button
-                          color="outline-secondary"
-                          onClick={() => this.onRadioBtnClick(1)}
-                          active={this.state.radioSelected === 1}
-                        >
-                          Day
-                        </Button>
                         <Button
                           color="outline-secondary"
                           onClick={() => this.onRadioBtnClick(2)}
@@ -800,85 +423,10 @@ class Dashboard extends Component {
             </Card>
           </Col>
         </Row>
-
         <Row>
           <Col>
             <Card>
-              <CardHeader className="mb-0">
-                Daily Bank Transactions
-                <div className="small text-muted">Bank Hours: 8am - 4pm</div>
-              </CardHeader>
               <CardBody>
-                <Row>
-                  <Col xs="12" md="12" xl="12">
-                    <div className="progress-group mb-4">
-                      <div className="progress-group-prepend">
-                        <span className="progress-group-text">UCPB</span>
-                      </div>
-                      <div className="progress-group-bars">
-                        <Progress
-                          className="progress-sm mt-2"
-                          color="success"
-                          value="34"
-                        />
-                      </div>
-                    </div>
-                    <div className="progress-group mb-4">
-                      <div className="progress-group-prepend">
-                        <span className="progress-group-text">
-                          Security Bank
-                        </span>
-                      </div>
-                      <div className="progress-group-bars">
-                        <Progress
-                          className="progress-sm mt-2"
-                          color="info"
-                          value="45"
-                        />
-                      </div>
-                    </div>
-                    <div className="progress-group mb-4">
-                      <div className="progress-group-prepend">
-                        <span className="progress-group-text">Union Bank</span>
-                      </div>
-                      <div className="progress-group-bars">
-                        <Progress
-                          className="progress-sm mt-2"
-                          color="warning"
-                          value="78"
-                        />
-                      </div>
-                    </div>
-                    <div className="progress-group mb-4">
-                      <div className="progress-group-prepend">
-                        <span className="progress-group-text">
-                          Bank of the Philippine Island
-                        </span>
-                      </div>
-                      <div className="progress-group-bars">
-                        <Progress
-                          className="progress-sm mt-2"
-                          color="danger"
-                          value="50"
-                        />
-                      </div>
-                    </div>
-                    <div className="progress-group mb-4">
-                      <div className="progress-group-prepend">
-                        <span className="progress-group-text">
-                          Banko De Oro
-                        </span>
-                      </div>
-                      <div className="progress-group-bars">
-                        <Progress
-                          className="progress-sm mt-2"
-                          color="primary"
-                          value="70"
-                        />
-                      </div>
-                    </div>
-                  </Col>
-                </Row>
                 <br />
                 <Table
                   hover
@@ -1231,11 +779,11 @@ class Dashboard extends Component {
                     </tr>
                   </tbody>
                 </Table>
-              </CardBody>
-            </Card>
-          </Col>
-        </Row>
-      </div>
+            </CardBody>
+          </Card>
+        </Col>
+      </Row>
+    </div>
     );
   }
 }
