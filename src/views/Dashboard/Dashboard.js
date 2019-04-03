@@ -514,7 +514,7 @@ class Dashboard extends Component {
                         </div>
                       </td>
                       <td>
-                        <div>Avram Tarasios</div>
+                        <div><Link to="/users">Avram Tarasios</Link></div>
                         <div className="small text-muted">
                           <span>Recurring</span> | Registered: Jan 1, 2015
                         </div>
@@ -569,7 +569,7 @@ class Dashboard extends Component {
                         </div>
                       </td>
                       <td>
-                        <div>Juan Dela Cruz</div>
+                        <div><Link to="/users">Juan Dela Cruz</Link></div>
                         <div className="small text-muted">
                           <span>New</span> | Registered: Jan 1, 2015
                         </div>
@@ -624,7 +624,7 @@ class Dashboard extends Component {
                         </div>
                       </td>
                       <td>
-                        <div>Joseph Estrada</div>
+                        <div><Link to="/users">Joseph Estrada</Link></div>
                         <div className="small text-muted">
                           <span>New</span> | Registered: Jan 1, 2015
                         </div>
@@ -679,7 +679,7 @@ class Dashboard extends Component {
                         </div>
                       </td>
                       <td>
-                        <div>Agapetus Tadeáš</div>
+                        <div><Link to="/users">Agapetus Tadeáš</Link></div>
                         <div className="small text-muted">
                           <span>New</span> | Registered: Jan 1, 2015
                         </div>
@@ -734,7 +734,7 @@ class Dashboard extends Component {
                         </div>
                       </td>
                       <td>
-                        <div>Friderik Dávid</div>
+                        <div><Link to="/users">Friderik Dávid/</Link></div>
                         <div className="small text-muted">
                           <span>New</span> | Registered: Jan 1, 2015
                         </div>
