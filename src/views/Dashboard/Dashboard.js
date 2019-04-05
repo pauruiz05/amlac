@@ -2,9 +2,7 @@ import React, { Component, lazy, Suspense } from "react";
 import { Bar, Line } from "react-chartjs-2";
 import { Link} from "react-router-dom";
 import {
-  Badge,
   Button,
-  ButtonDropdown,
   ButtonGroup,
   ButtonToolbar,
   Card,
@@ -13,13 +11,8 @@ import {
   CardHeader,
   CardTitle,
   Col,
-  Dropdown,
-  DropdownItem,
-  DropdownMenu,
-  DropdownToggle,
   Progress,
   Row,
-  Table
 } from "reactstrap";
 import { CustomTooltips } from "@coreui/coreui-plugin-chartjs-custom-tooltips";
 import { getStyle, hexToRgba } from "@coreui/coreui/dist/js/coreui-utilities";
@@ -216,7 +209,7 @@ class Dashboard extends Component {
                     <div className="progress-group mb-4">
                       <div className="progress-group-prepend">
                         <span className="progress-group-text">
-                        <Link to="/users" style={styles.link}>UCPB</Link>
+                        <Link to="/ucpb/users" style={styles.link}>UCPB</Link>
                         </span>
                       </div>
                       <div className="progress-group-bars">
@@ -237,7 +230,7 @@ class Dashboard extends Component {
                     <div className="progress-group mb-4">
                       <div className="progress-group-prepend">
                         <span className="progress-group-text">
-                        <Link to="/users" style={styles.link}>Security Bank</Link>
+                        <Link to="/securitybank/users" style={styles.link}>Security Bank</Link>
                         </span>
                       </div>
                       <div className="progress-group-bars">
@@ -260,7 +253,7 @@ class Dashboard extends Component {
                     <div className="progress-group mb-4">
                       <div className="progress-group-prepend">
                         <span className="progress-group-text">
-                        <Link to="/users" style={styles.link}>UnionBank</Link>
+                        <Link to="/unionbank/users" style={styles.link}>UnionBank</Link>
                         </span>
                       </div>
                       <div className="progress-group-bars">
@@ -281,7 +274,7 @@ class Dashboard extends Component {
                     <div className="progress-group mb-4">
                       <div className="progress-group-prepend">
                         <span className="progress-group-text">
-                        <Link to="/users" style={styles.link}>BPI</Link>
+                        <Link to="/bpi/users" style={styles.link}>BPI</Link>
                         </span>
                       </div>
                       <div className="progress-group-bars">
@@ -302,7 +295,7 @@ class Dashboard extends Component {
                     <div className="progress-group mb-4">
                       <div className="progress-group-prepend">
                         <span className="progress-group-text">
-                        <Link to="/users" style={styles.link}>BDO</Link>
+                        <Link to="/bdo/users" style={styles.link}>BDO</Link>
                         </span>
                       </div>
                       <div className="progress-group-bars">
@@ -432,6 +425,7 @@ class Dashboard extends Component {
             </Card>
           </Col>
       </Row>
+   
     </div>
     );
   }
