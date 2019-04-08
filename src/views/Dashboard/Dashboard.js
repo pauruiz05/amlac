@@ -30,7 +30,7 @@ const data = {
 };
 
 const myConfig = {
-  width: 1800,
+  width: 1570,
   nodeHighlightBehavior: true,
   node: {
     size: 500,
@@ -256,6 +256,25 @@ class Dashboard extends Component {
   render() {
     return (
       <div className="animated fadeIn">
+        <Row>
+          <Col>
+            <div className="upload">
+              <ButtonToolbar className="float-right">
+                <Button
+                  variant="contained"
+                  color="default"
+                  label="Upload File"
+                  labelPosition="before"
+                  style={styles.button}
+                  containerElement="label"
+                  primary={true}
+                >
+                  <input type="file" />
+                </Button>
+              </ButtonToolbar>
+            </div>
+          </Col>
+        </Row>
         <Row>
           <Col>
             <Card>
