@@ -1,6 +1,8 @@
-import React, { Component, lazy, Suspense } from "react";
-import { Bar, Line } from "react-chartjs-2";
-import { Link} from "react-router-dom";
+import React, { Component } from "react";
+import { Line } from "react-chartjs-2";
+import { Link } from "react-router-dom";
+import { Graph } from "react-d3-graph";
+
 import {
   Button,
   ButtonGroup,
@@ -12,12 +14,70 @@ import {
   CardTitle,
   Col,
   Progress,
-  Row,
+  Row
 } from "reactstrap";
 import { CustomTooltips } from "@coreui/coreui-plugin-chartjs-custom-tooltips";
 import { getStyle, hexToRgba } from "@coreui/coreui/dist/js/coreui-utilities";
 
-const Widget03 = lazy(() => import("../../views/Widgets/Widget03"));
+import nodes from "./nodes.json";
+
+console.log(nodes);
+
+// graph payload (with minimalist structure)
+const data = {
+  nodes: nodes.nodes,
+  links: nodes.links
+};
+
+const myConfig = {
+  width: 1570,
+  nodeHighlightBehavior: true,
+  node: {
+    size: 500,
+    highlightStrokeColor: "black",
+    fontSize: 18
+  },
+  link: {
+    highlightColor: "black"
+  }
+};
+
+// graph event callbacks
+const onClickGraph = function() {
+  // window.alert(`Clicked the graph background`);
+};
+
+const onClickNode = function(nodeId) {
+  window.alert(`Clicked node ${nodeId}`);
+};
+
+const onRightClickNode = function(event, nodeId) {
+  // window.alert(`Right clicked node ${nodeId}`);
+};
+
+const onMouseOverNode = function(nodeId) {
+  // window.alert(`Mouse over node ${nodeId}`);
+};
+
+const onMouseOutNode = function(nodeId) {
+  // window.alert(`Mouse out node ${nodeId}`);
+};
+
+const onClickLink = function(source, target) {
+  window.alert(`Clicked link between ${source} and ${target}`);
+};
+
+const onRightClickLink = function(event, source, target) {
+  // window.alert(`Right clicked link between ${source} and ${target}`);
+};
+
+const onMouseOverLink = function(source, target) {
+  // window.alert(`Mouse over in link between ${source} and ${target}`);
+};
+
+const onMouseOutLink = function(source, target) {
+  // window.alert(`Mouse out link between ${source} and ${target}`);
+};
 
 const brandPrimary = getStyle("--primary");
 const brandSuccess = getStyle("--success");
@@ -196,8 +256,51 @@ class Dashboard extends Component {
   render() {
     return (
       <div className="animated fadeIn">
-      <Row>
+        <Row>
           <Col>
+            <div className="upload">
+              <ButtonToolbar className="float-right">
+                <Button
+                  variant="contained"
+                  color="default"
+                  label="Upload File"
+                  labelPosition="before"
+                  style={styles.button}
+                  containerElement="label"
+                  primary={true}
+                >
+                  <input type="file" name="file" onChange={this.onChangeHandler}/>
+                  <button type="button" onClick={this.onClickHandler}>Upload</button>
+                </Button>
+                
+              </ButtonToolbar>
+              
+            </div>
+          </Col>
+        </Row>
+        <Row>
+          <Col>
+            <Card>
+              <CardHeader className="mb-0">Transactions</CardHeader>
+              <CardBody>
+                <Col xs="12" md="12" xl="12">
+                  <Graph
+                    id="graph-id" // id is mandatory, if no id is defined rd3g will throw an error
+                    data={data}
+                    config={myConfig}
+                    onClickNode={onClickNode}
+                    onRightClickNode={onRightClickNode}
+                    onClickGraph={onClickGraph}
+                    onClickLink={onClickLink}
+                    onRightClickLink={onRightClickLink}
+                    onMouseOverNode={onMouseOverNode}
+                    onMouseOutNode={onMouseOutNode}
+                    onMouseOverLink={onMouseOverLink}
+                    onMouseOutLink={onMouseOutLink}
+                  />
+                </Col>
+              </CardBody>
+            </Card>
             <Card>
               <CardHeader className="mb-0">
                 Daily Bank Transactions
@@ -209,112 +312,112 @@ class Dashboard extends Component {
                     <div className="progress-group mb-4">
                       <div className="progress-group-prepend">
                         <span className="progress-group-text">
-                        <Link to="/ucpb/users" style={styles.link}>UCPB</Link>
-                        </span>
-                      </div>
-                      <div className="progress-group-bars">
-                      <div>
-                        <Progress
-                          className="progress-sm mt-2"
-                          color="success"
-                          value="34"
-                        />
-                        <div className="float-right">
-                        <small className="text-muted">
-                              34%
-                        </small>
-                        </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="progress-group mb-4">
-                      <div className="progress-group-prepend">
-                        <span className="progress-group-text">
-                        <Link to="/securitybank/users" style={styles.link}>Security Bank</Link>
-                        </span>
-                      </div>
-                      <div className="progress-group-bars">
-                      <div>
-                        <Progress
-                          className="progress-sm mt-2"
-                          color="info"
-                          value="45"
-                        />
-                        <div className="float-right">
-                        <div className="float-right">
-                        <small className="text-muted">
-                             45%
-                        </small>
-                        </div>
-                        </div>
-                      </div>
-                      </div>
-                    </div>
-                    <div className="progress-group mb-4">
-                      <div className="progress-group-prepend">
-                        <span className="progress-group-text">
-                        <Link to="/unionbank/users" style={styles.link}>UnionBank</Link>
+                          <Link to="/users" style={styles.link}>
+                            UCPB
+                          </Link>
                         </span>
                       </div>
                       <div className="progress-group-bars">
                         <div>
-                        <Progress
-                          className="progress-sm mt-2"
-                          color="warning"
-                          value="78"
-                        />
-                        <div className="float-right">
-                        <small className="text-muted">
-                              78%
-                        </small>
-                        </div>
-                      </div>
-                      </div>
-                    </div>
-                    <div className="progress-group mb-4">
-                      <div className="progress-group-prepend">
-                        <span className="progress-group-text">
-                        <Link to="/bpi/users" style={styles.link}>BPI</Link>
-                        </span>
-                      </div>
-                      <div className="progress-group-bars">
-                      <div>
-                        <Progress
-                          className="progress-sm mt-2"
-                          color="danger"
-                          value="50"
-                        />
-                        <div className="float-right">
-                        <small className="text-muted">
-                              50%
-                        </small>
-                        </div>
+                          <Progress
+                            className="progress-sm mt-2"
+                            color="success"
+                            value="34"
+                          />
+                          <div className="float-right">
+                            <small className="text-muted">34%</small>
+                          </div>
                         </div>
                       </div>
                     </div>
                     <div className="progress-group mb-4">
                       <div className="progress-group-prepend">
                         <span className="progress-group-text">
-                        <Link to="/bdo/users" style={styles.link}>BDO</Link>
+                          <Link to="/users" style={styles.link}>
+                            Security Bank
+                          </Link>
                         </span>
                       </div>
                       <div className="progress-group-bars">
                         <div>
-                        <Progress
-                          className="progress-sm mt-2"
-                          color="primary"
-                          value="70"
-                        />
-                        <div className="float-right">
-                        <small className="text-muted">
-                              70%
-                        </small>
+                          <Progress
+                            className="progress-sm mt-2"
+                            color="info"
+                            value="45"
+                          />
+                          <div className="float-right">
+                            <div className="float-right">
+                              <small className="text-muted">45%</small>
+                            </div>
+                          </div>
                         </div>
+                      </div>
+                    </div>
+                    <div className="progress-group mb-4">
+                      <div className="progress-group-prepend">
+                        <span className="progress-group-text">
+                          <Link to="/users" style={styles.link}>
+                            UnionBank
+                          </Link>
+                        </span>
+                      </div>
+                      <div className="progress-group-bars">
+                        <div>
+                          <Progress
+                            className="progress-sm mt-2"
+                            color="warning"
+                            value="78"
+                          />
+                          <div className="float-right">
+                            <small className="text-muted">78%</small>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="progress-group mb-4">
+                      <div className="progress-group-prepend">
+                        <span className="progress-group-text">
+                          <Link to="/users" style={styles.link}>
+                            BPI
+                          </Link>
+                        </span>
+                      </div>
+                      <div className="progress-group-bars">
+                        <div>
+                          <Progress
+                            className="progress-sm mt-2"
+                            color="danger"
+                            value="50"
+                          />
+                          <div className="float-right">
+                            <small className="text-muted">50%</small>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="progress-group mb-4">
+                      <div className="progress-group-prepend">
+                        <span className="progress-group-text">
+                          <Link to="/users" style={styles.link}>
+                            BDO
+                          </Link>
+                        </span>
+                      </div>
+                      <div className="progress-group-bars">
+                        <div>
+                          <Progress
+                            className="progress-sm mt-2"
+                            color="primary"
+                            value="70"
+                          />
+                          <div className="float-right">
+                            <small className="text-muted">70%</small>
+                          </div>
                         </div>
                       </div>
                     </div>
                   </Col>
-                  </Row>
+                </Row>
               </CardBody>
             </Card>
           </Col>
@@ -424,11 +527,11 @@ class Dashboard extends Component {
               </CardFooter>
             </Card>
           </Col>
-      </Row>
-   
-    </div>
+        </Row>
+      </div>
     );
   }
 }
+
 
 export default Dashboard;
